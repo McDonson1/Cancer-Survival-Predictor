@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
-import joblib  
+import joblib  # use joblib for loading the model
 
-# Load the trained model 
+# Load the trained model
 model = joblib.load("GradientBoosting.jlb")
 
 # Country list
@@ -45,18 +45,18 @@ tumor_size = st.number_input("Tumor Size (mm)", min_value=0.0)
 urban_rural = st.selectbox("Urban or Rural", ["Urban", "Rural"])
 age = st.number_input("Age", min_value=0)
 
-# Define expected columns (must match what model was trained on)
+# Define expected columns (must exactly match training data)
 columns = [
     'Alcohol Consumption', 'Cancer Stage', 'Country', 'Diabetes', 'Diabetes History',
     'Diet Risk', 'Early Detection', 'Family History', 'Gender', 'Genetic Mutation',
     'Healthcare Access', 'Healthcare Costs', 'Heart Disease History', 'Hypertension',
     'Incidence Rate per 100K', 'Inflammatory Bowel Disease', 'Insurance Costs', 'Insurance Status',
-    'Mortality Rate per 100K', 'Non-Smoker', 'Obesity BMI', 'Physical Activity',
+    'Mortality Rate per 100K', 'Non Smoker', 'Obesity BMI', 'Physical Activity',
     'Screening History', 'Smoking History', 'Treatment Type', 'Tumor Size (mm)',
     'Urban or Rural', 'Age'
 ]
 
-# Create the DataFrame in the correct format (human-readable)
+# Create the DataFrame
 input_data = pd.DataFrame([[
     alcohol,
     cancer_stage,
@@ -91,5 +91,5 @@ input_data = pd.DataFrame([[
 # Predict
 if st.button("Predict Survival"):
     prediction = model.predict(input_data)
-    result = "Yes" if prediction[0] == 1 else "No"  
+    result = "Yes" if prediction[0] == 1 else "No"
     st.success(f"Prediction: {result}")
