@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 
 # Load the trained model
-with open("GradientBoosting.pkl", "rb") as model_file:
+with open("GradientBoosting.jlb", "rb") as model_file:
     model = pickle.load(model_file)
 
 # Country list
