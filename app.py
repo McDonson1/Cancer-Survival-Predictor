@@ -1,10 +1,9 @@
 import streamlit as st
 import pandas as pd
-import pickle
+import joblib  
 
-# Load the trained model
-with open("GradientBoosting.jlb", "rb") as model_file:
-    model = pickle.load(model_file)
+# Load the trained model 
+model = joblib.load("GradientBoosting.jlb")
 
 # Country list
 countries = [
@@ -52,7 +51,7 @@ columns = [
     'Diet Risk', 'Early Detection', 'Family History', 'Gender', 'Genetic Mutation',
     'Healthcare Access', 'Healthcare Costs', 'Heart Disease History', 'Hypertension',
     'Incidence Rate per 100K', 'Inflammatory Bowel Disease', 'Insurance Costs', 'Insurance Status',
-    'Mortality Rate per 100K', 'Non Smoker', 'Obesity BMI', 'Physical Activity',
+    'Mortality Rate per 100K', 'Non-Smoker', 'Obesity BMI', 'Physical Activity',
     'Screening History', 'Smoking History', 'Treatment Type', 'Tumor Size (mm)',
     'Urban or Rural', 'Age'
 ]
@@ -92,5 +91,5 @@ input_data = pd.DataFrame([[
 # Predict
 if st.button("Predict Survival"):
     prediction = model.predict(input_data)
-    result = "Yes" if prediction[0] == 1 else "0"
+    result = "Yes" if prediction[0] == 1 else "No"  
     st.success(f"Prediction: {result}")
