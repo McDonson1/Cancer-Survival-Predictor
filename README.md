@@ -6,7 +6,7 @@ An educational machine-learning project that explores binary cancer-survival cla
 
 ## Project overview
 
-The project uses a labelled training dataset to predict the binary target `Survival Prediction` (`Yes` / `No`). The notebook compares modelling approaches and the selected approach is a Gradient Boosting classifier with ADASYN oversampling.
+The project uses a labelled training dataset to predict the binary target `Survival Prediction` (`Yes` / `No`). The original exploration compared multiple classifiers and sampling methods. The corrected notebook now focuses on a reproducible Gradient Boosting classifier with ADASYN oversampling, with exploratory summaries and plots retained.
 
 The corrected training workflow is in **[Cancer Survival Prediction.ipynb](./Cancer%20Survival%20Prediction.ipynb)**. It keeps the internal validation data separate from the external test data, fits preprocessing only on the training fold, evaluates with a stratified split, and preserves the original external test IDs when creating a submission file.
 
@@ -146,7 +146,7 @@ The current app's Treatment Type choices include `Radiation` and `Combined`, whi
 
 The current app also exposes only Male and Female. The training data contained a `P` gender code; the corrected notebook retains it rather than guessing its meaning. Confirm the data dictionary before expanding or changing the app's gender choices.
 
-The existing dependency pins in `requirements.txt` were left unchanged because the user had previously confirmed that the deployed app was working with them. Pickle artifacts are version-sensitive; use the compatible Python and package versions when loading the existing model.
+The existing dependency pins in `requirements.txt` were left unchanged to avoid altering the current app runtime during this audit. Pickle artifacts are version-sensitive; use the compatible Python and package versions when loading the existing model.
 
 ## Limitations and next steps
 
