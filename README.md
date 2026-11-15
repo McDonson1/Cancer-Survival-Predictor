@@ -108,7 +108,7 @@ The corrected notebook now validates that the external test file contains exactl
    **Windows PowerShell**
    ```powershell
    python -m venv .venv
-   .venv\\Scripts\\Activate.ps1
+   .venv\Scripts\Activate.ps1
    ```
 
    **macOS/Linux**
